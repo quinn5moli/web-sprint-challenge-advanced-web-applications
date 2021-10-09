@@ -5,9 +5,7 @@ import styled from 'styled-components';
 
 import Header from './Header';
 import LambdaHeader from './LambdaHeader';
-import View from './View';
-import Login from './Login';
-import Logout from './Logout';
+import componentRoute from './Route';
 
 const App = () => {
   return (
@@ -15,9 +13,7 @@ const App = () => {
       <LambdaHeader/>
       <Header/>
       <RouteContainer>
-        <Route exact path="/">
-          <Login/>
-        </Route>          
+        <componentRoute />         
       </RouteContainer>
     </AppContainer>
   )
