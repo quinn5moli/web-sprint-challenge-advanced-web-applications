@@ -1,15 +1,80 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory} from 'react-router-dom';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
-const Login = () => {
-    
-    return(<ComponentContainer>
+const initialFormValues = {
+    username: "",
+    password: "",
+}
+
+const Login = (props) => {
+
+    const [ formValues, setFormValues ] = useState(initialFormValues);
+    const [error, setError] = useState(null);
+    const { push } = useHistory();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({...formValues, [name]: value })
+    };
+
+    const clearForm = () => {
+        setFormValues(initialFormValues );
+    }
+
+    const handleSubmit = (e) => {
+        setError(null);
+        e.preventDefault();
+        axiosWithAuth()
+            .post("/login", formValues)
+            .then(({data}) => {
+                const { username, role, token } = data;
+                window.localStorage.setItem("username", username);
+                window.localStorage.setItem("role", role);
+                window.localStorage.setItem("token", token);
+                clearForm();
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+                setError(error.response.data.error);
+            })
+            .finally(() => {
+                push("/view")
+            })
+    };
+
+    return(
+    <ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
+            <form id="submit" action="submit" onSubmit={handleSubmit}>
+                <input
+                    id="username"
+                    type="text"
+                    value={formValues.username}
+                    placeholder="username"
+                    name="username"
+                    onChange={handleChange}
+                />
+                <input
+                    id="password"
+                    type="password"
+                    value={formValues.password}
+                    placeholder="password"
+                    name="password"
+                    onChange={handleChange}
+                /> 
+                <p id="error" className="error">{error}</p>
+                <button id="submit" type="submit">
+                    Log In
+                </button>
+            </form>
         </ModalContainer>
-    </ComponentContainer>);
-}
+    </ComponentContainer>
+    );
+};
 
 export default Login;
 
@@ -25,7 +90,7 @@ const ComponentContainer = styled.div`
     height: 70%;
     justify-content: center;
     align-items: center;
-    display:flex;
+    display: flex;
 `
 
 const ModalContainer = styled.div`
