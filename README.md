@@ -43,14 +43,14 @@ In this project, you will demonstrate your mastery of these skills by creating *
 * [x] Display an appropriate error message when login is not successful.
 
 ### Route Authentication
-* [ ] Build a `PrivateRoute` component within the components folder.
-* [ ] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
-* [ ] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
+* [x] Build a `PrivateRoute` component within the components folder.
+* [x] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
+* [x] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
 
 ### Request Authentication
 > *Complete the requests needed to execute all CRUD functions.*
 * [x] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header.
-* [ ] Complete the `services/articleService.js` module. It should use make an authenticated call to retrieve and return all articles from the server.
+* [x] Complete the `services/articleService.js` module. It should use make an authenticated call to retrieve and return all articles from the server.
 
 * [ ] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
 

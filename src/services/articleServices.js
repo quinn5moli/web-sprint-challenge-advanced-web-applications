@@ -1,7 +1,17 @@
-
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const articleService = ()=> {
-}
+    return new Promise((resolve, reject) => {
+        axiosWithAuth()
+        .get('/articles')
+        .then(({data}) => {
+            resolve(data)
+        })
+        .catch((error) => {
+            reject(error)
+        })
+    })
+};
 
 export default articleService;
 
