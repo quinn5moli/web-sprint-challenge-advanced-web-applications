@@ -8,13 +8,13 @@ import Article from './Article';
 import { render, screen } from '@testing-library/react'
 
 const testArticle = {
-    id: 1224,
-      headline: "Community College of Philadelphia to require vaccines, the first public college in the region to do so.",
-      createdOn: Date.now(),
-      author: "Susan Snyder",
-      image: 175,
-      summary: "The requirement, which will allow exemptions for medical and religious reasons, won’t be in place for the start of the semester.",
-      body: "The Pennsylvania State System of Higher Education has said its 14 public universities, including West Chester and Cheyney, don’t have the authority to require a vaccine and would need legislation. Neither Pennsylvania State University nor Temple University, which are state-related, have required the vaccines either."
+    id: 100,
+    headline: "Less than half of Seattle homes have air conditioning. After a deadly heat wave, ‘everybody’ wants it.",
+    createdOn: Date.now(),
+    author:"",
+    image: 134,
+    summary: "Triple-digit temperatures led to a spike in demand across the region.",
+    body: "Inside the attic of a one-story gray house in a Seattle suburb last week, Jeff Bryson gingerly strapped copper piping across the rafters while wearing a white face mask and a headlamp. The temperature was about 110 degrees in the tight space, which was covered in insulation dust. His work was meant to cool the rest of the home."   
 }
 
 test('renders component without errors', ()=> {

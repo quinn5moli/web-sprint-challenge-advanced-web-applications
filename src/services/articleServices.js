@@ -1,16 +1,10 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-const articleService = ()=> {
-    return new Promise((resolve, reject) => {
-        axiosWithAuth()
+const articleService = () => {
+    return axiosWithAuth()
         .get('/articles')
-        .then(({data}) => {
-            resolve(data)
-        })
-        .catch((error) => {
-            reject(error)
-        })
-    })
+        .then(({data}) => data)
+        .catch(({error}) => error);
 };
 
 export default articleService;

@@ -22,7 +22,7 @@ const View = (props) => {
     const handleEdit = (article) => {
         axiosWithAuth()
             .put(`/articles/${article.id}`, article)
-            .then(({}) => setArticles(data))
+            .then(({data}) => setArticles(data))
             .catch((err) => console.log(err))
             .finally(() => {
                 setEditing(false)
@@ -44,21 +44,23 @@ const View = (props) => {
             .catch((err) => console.log(err));
     }, [])
 
-    return(<ComponentContainer>
+    return(
+    <ComponentContainer>
         <HeaderContainer>View Articles</HeaderContainer>
         <ContentContainer flexDirection="row">
             <ArticleContainer>
                 {
-                    articles.map(article => {
-                        return <ArticleDivider key={article.id}>
+                    articles.map((article) => {
+                        return (
+                        <ArticleDivider key={article.id}>
                             <Article key={article.id} article={article} handleDelete={handleDelete} handleEditSelect={handleEditSelect}/>
                         </ArticleDivider>
-                    })
-                }
+                        );
+                        })}
             </ArticleContainer>
             
             {
-                editing && <EditForm editId={editId} handleEdit={handleEdit} handleEditCancel={handleEditCancel}/>
+                editing && (<EditForm editId={editId} handleEdit={handleEdit} handleEditCancel={handleEditCancel}/>)
             }
         </ContentContainer>
     </ComponentContainer>);
