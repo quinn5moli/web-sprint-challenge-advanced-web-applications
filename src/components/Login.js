@@ -8,6 +8,8 @@ const initialFormValues = {
     password: "",
 }
 
+const error = "";
+
 const Login = (props) => {
 
     const [ formValues, setFormValues ] = useState(initialFormValues);
@@ -49,7 +51,7 @@ const Login = (props) => {
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
-            <form id="submit" action="submit" onSubmit={handleSubmit}>
+            <form action="submit" onSubmit={handleSubmit}>
                 <input
                     id="username"
                     type="text"
@@ -66,7 +68,7 @@ const Login = (props) => {
                     name="password"
                     onChange={handleChange}
                 /> 
-                <p id="error" className="error">{error}</p>
+                {error && <p id="error" className="error">{error}</p>}
                 <button id="submit" type="submit">
                     Log In
                 </button>
